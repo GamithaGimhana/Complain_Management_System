@@ -39,7 +39,6 @@
     <div class="card-body p-5">
         <h2 class="card-title text-center mb-4">Login</h2>
 
-        <%-- Form starts here --%>
         <form action="login" method="post">
 
             <%-- Error Message Display --%>
@@ -53,19 +52,12 @@
             <%
                 }
             %>
-            <%-- Using EL is a more modern approach if JSTL is configured:
-            <c:if test="${not empty errorMessage}">
-                <div class="alert alert-danger" role="alert">
-                    ${errorMessage}
-                </div>
-            </c:if>
-            --%>
 
-            <!-- Username Input -->
+            <!-- Email Input -->
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username"
-                       placeholder="Enter your username" required>
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       placeholder="name@example.com" required>
             </div>
 
             <!-- Password Input -->

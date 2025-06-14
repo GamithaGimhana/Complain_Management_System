@@ -1,27 +1,50 @@
 package com.gdse.aad.cms.utils;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DataSource {         // 3
-    private static final BasicDataSource ds = new BasicDataSource();
+@WebListener
+public class DataSource implements ServletContextListener {
 
-    static {
+    public DataSource() {
+        // Required public no-arg constructor (Tomcat uses this)
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        // Initialize connection pool
+        BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/complaint_management_system");
         ds.setUsername("root");
         ds.setPassword("Ijse@1234");
-        ds.setMinIdle(5);
-        ds.setMaxIdle(10);
-        ds.setMaxOpenPreparedStatements(100);
+        ds.setInitialSize(5);   // minimum idle connections
+        ds.setMaxTotal(10);     // max total connections
+
+        ServletContext sc = sce.getServletContext();
+        sc.setAttribute("ds", ds);
+        System.out.println("DataSource initialized for complaint_management_system");
     }
 
-    public static Connection getConnection() throws SQLException {
-        return ds.getConnection();
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        // Clean up
+        try {
+            ServletContext sc = sce.getServletContext();
+            BasicDataSource ds = (BasicDataSource) sc.getAttribute("ds");
+            if (ds != null) {
+                ds.close();
+                System.out.println("DataSource closed");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to close DataSource", e);
+        }
     }
-
-    private DataSource() {}
-
 }
+

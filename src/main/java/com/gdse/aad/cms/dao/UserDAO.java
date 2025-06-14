@@ -10,8 +10,9 @@ import java.sql.*;
 public class UserDAO {
     private BasicDataSource ds;
 
-    public UserDAO(ServletContext context) {
-        this.ds = (BasicDataSource) context.getAttribute("ds");
+    public UserDAO(ServletContext servletContext) {
+        this.ds = (BasicDataSource) servletContext.getAttribute("ds");
+
     }
 
     public User getUserByEmail(String email) throws SQLException {
@@ -32,6 +33,26 @@ public class UserDAO {
         }
         return null;
     }
+
+    public boolean registerUser(User user) throws SQLException {
+        String sql = "INSERT INTO user (uid, uname, uemail, upassword, urole) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, user.getUid());
+            ps.setString(2, user.getUname());
+            ps.setString(3, user.getUemail());
+            ps.setString(4, user.getUpassword()); // Hashed
+            ps.setString(5, user.getUrole());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLIntegrityConstraintViolationException e) {
+            // Email already exists
+            return false;
+        }
+    }
+
 
 }
 
