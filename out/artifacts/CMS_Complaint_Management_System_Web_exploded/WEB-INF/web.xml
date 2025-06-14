@@ -11,8 +11,4 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    <listener>
-        <listener-class>com.gdse.aad.cms.utils.DataSource</listener-class>
-    </listener>
-
 </web-app>
