@@ -6,6 +6,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComplaintDAO {
     private BasicDataSource ds;
@@ -26,4 +29,27 @@ public class ComplaintDAO {
             return ps.executeUpdate() > 0;
         }
     }
+
+    public List<Complaint> getComplaintsByUser(String userId) throws Exception {
+        List<Complaint> complaints = new ArrayList<>();
+        String sql = "SELECT cid, ctitle, cdescription, ccreated_at, cstatus FROM complaint WHERE user_id = ? ORDER BY ccreated_at DESC";
+
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Complaint c = new Complaint();
+                c.setCid(rs.getString("cid"));
+                c.setCtitle(rs.getString("ctitle"));
+                c.setCdescription(rs.getString("cdescription"));
+                c.setCcreatedAt(rs.getString("ccreated_at"));
+                c.setCstatus(rs.getString("cstatus"));
+                complaints.add(c);
+            }
+        }
+        return complaints;
+    }
+
 }

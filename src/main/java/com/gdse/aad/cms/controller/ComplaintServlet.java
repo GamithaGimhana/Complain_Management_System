@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @WebServlet(name = "ComplaintServlet", urlPatterns = {"/complaint"})
@@ -41,6 +42,24 @@ public class ComplaintServlet extends HttpServlet {
             }
         } catch (Exception e) {
             throw new ServletException("Complaint submission failed", e);
+        }
+    }
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = (User) req.getSession().getAttribute("user");
+        if (user == null || !"EMPLOYEE".equals(user.getUrole())) {
+            resp.sendRedirect("login.jsp");
+            return;
+        }
+
+        try {
+            ComplaintDAO dao = new ComplaintDAO(getServletContext());
+            List<Complaint> complaintList = dao.getComplaintsByUser(user.getUid());
+
+            req.setAttribute("complaints", complaintList);
+            req.getRequestDispatcher("my_complaints.jsp").forward(req, resp);
+        } catch (Exception e) {
+            throw new ServletException("Failed to load complaints", e);
         }
     }
 }
