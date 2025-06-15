@@ -37,7 +37,7 @@
             <h5>Employee Options</h5>
             <ul>
                 <li><a href="complaint_form.jsp">Submit Complaint</a></li>
-                <li><a href="my_complaints.jsp">View My Complaints</a></li>
+                <li><a href="my_complaints">View My Complaints</a></li>
             </ul>
             <% } else if ("ADMIN".equals(user.getUrole())) { %>
             <h5>Admin Options</h5>

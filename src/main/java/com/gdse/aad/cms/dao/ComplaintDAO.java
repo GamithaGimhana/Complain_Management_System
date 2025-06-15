@@ -52,4 +52,50 @@ public class ComplaintDAO {
         return complaints;
     }
 
+    public Complaint getComplaintById(String cid) throws Exception {
+        String sql = "SELECT cid, user_id, ctitle, cdescription, cstatus, ccreated_at FROM complaint WHERE cid = ?";
+
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, cid);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Complaint c = new Complaint();
+                c.setCid(rs.getString("cid"));
+                c.setUserId(rs.getString("user_id"));
+                c.setCtitle(rs.getString("ctitle"));
+                c.setCdescription(rs.getString("cdescription"));
+                c.setCstatus(rs.getString("cstatus"));
+                c.setCcreatedAt(rs.getString("ccreated_at"));
+                return c;
+            }
+        }
+        return null;
+    }
+
+
+    public boolean updateComplaint(Complaint complaint) throws Exception {
+        String sql = "UPDATE complaint SET ctitle = ?, cdescription = ? WHERE cid = ? AND cstatus = 'PENDING'";
+
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, complaint.getCtitle());
+            ps.setString(2, complaint.getCdescription());
+            ps.setString(3, complaint.getCid());
+            return ps.executeUpdate() > 0;
+        }
+    }
+
+    public boolean deleteComplaintById(String cid, String userId) throws Exception {
+        String sql = "DELETE FROM complaint WHERE cid = ? AND user_id = ? AND cstatus = 'PENDING'";
+
+        try (Connection con = ds.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, cid);
+            ps.setString(2, userId);
+            return ps.executeUpdate() > 0;
+        }
+    }
+
 }

@@ -8,7 +8,6 @@ public class Complaint {
     private String cstatus;
     private String ccreatedAt;
 
-
     public Complaint() {
     }
 
