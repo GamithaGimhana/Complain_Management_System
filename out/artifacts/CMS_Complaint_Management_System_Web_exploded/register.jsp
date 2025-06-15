@@ -10,12 +10,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Register Page</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <style>
-        body { display: flex; align-items: center; justify-content: center; height: 100vh; background: #f8f9fa; }
-        .register-card { max-width: 500px; width: 100%; }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f8f9fa;
+        }
+        .register-card {
+            max-width: 500px;
+            width: 100%;
+        }
     </style>
+
 </head>
 <body>
 
