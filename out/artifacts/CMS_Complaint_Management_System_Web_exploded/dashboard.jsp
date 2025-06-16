@@ -42,7 +42,7 @@
             <% } else if ("ADMIN".equals(user.getUrole())) { %>
             <h5>Admin Options</h5>
             <ul>
-                <li><a href="all_complaints.jsp">View All Complaints</a></li>
+                <li><a href="all-complaints">View All Complaints</a></li>
                 <li><a href="manage_users.jsp">Manage Users</a></li>
             </ul>
             <% } %>

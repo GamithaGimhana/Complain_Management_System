@@ -7,17 +7,21 @@ public class Complaint {
     private String cdescription;
     private String cstatus;
     private String ccreatedAt;
+    private String cupdatedAt;
+    private String cremarks;
+    private String username; // Name of the user who submitted the complaint
 
     public Complaint() {
     }
 
-    public Complaint(String cid, String userId, String ctitle, String cdescription, String cstatus, String ccreatedAt) {
+    public Complaint(String cid, String userId, String ctitle, String cdescription, String cstatus, String ccreatedAt, String cremarks, String username) {
         this.cid = cid;
         this.userId = userId;
         this.ctitle = ctitle;
         this.cdescription = cdescription;
         this.cstatus = cstatus;
         this.ccreatedAt = ccreatedAt;
+        this.cremarks = cremarks;
     }
 
     public String getCid() {
@@ -55,6 +59,24 @@ public class Complaint {
     }
     public void setCcreatedAt(String ccreatedAt) {
         this.ccreatedAt = ccreatedAt;
+    }
+    public String getCupdatedAt() {
+        return cupdatedAt;
+    }
+    public void setCupdatedAt(String cupdatedAt) {
+        this.cupdatedAt = cupdatedAt;
+    }
+    public String getCremarks() {
+        return cremarks;
+    }
+    public void setCremarks(String cremarks) {
+        this.cremarks = cremarks;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }
