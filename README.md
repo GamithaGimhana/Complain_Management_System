@@ -40,7 +40,7 @@ The Complaint Management System allows:
 - ├── src/
 - │ └── com/gdse/aad/cms/
 - │ ├── controller/ # Servlets
-- │ ├── dao/ # Data access (JDBC + DBCP)
+- │ ├── dao/ # Data access (DBCP)
 - │ ├── model/ # JavaBeans (User, Complaint)
 - │ └── utils/ # DataSource connection pool
 - │
