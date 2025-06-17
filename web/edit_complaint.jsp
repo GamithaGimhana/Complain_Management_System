@@ -19,8 +19,10 @@
 <body>
 <div class="container mt-5">
   <h3>Edit Complaint</h3>
-  <form action="edit_complaint" method="post">
-    <input type="hidden" name="cid" value="<%= complaint.getCid() %>">
+<%--  <form action="edit_complaint" method="post">--%>
+  <form action="employee-complaint?action=update" method="post">
+
+  <input type="hidden" name="cid" value="<%= complaint.getCid() %>">
     <div class="mb-3">
       <label>Title</label>
       <input type="text" class="form-control" name="ctitle" value="<%= complaint.getCtitle() %>" required>
@@ -30,7 +32,8 @@
       <textarea class="form-control" name="cdescription" required><%= complaint.getCdescription() %></textarea>
     </div>
     <button type="submit" class="btn btn-success">Update</button>
-    <a href="my_complaints" class="btn btn-secondary">Cancel</a>
+<%--    <a href="my_complaints" class="btn btn-secondary">Cancel</a>--%>
+    <a href="employee-complaint" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 </body>

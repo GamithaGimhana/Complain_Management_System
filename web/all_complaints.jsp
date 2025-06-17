@@ -42,16 +42,26 @@
       <td><%= c.getCremarks() != null ? c.getCremarks() : "" %></td>
       <td><%= c.getCcreatedAt() %></td>
       <td>
-        <a href="update-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>
-        <a href="admin-delete-complaint?cid=<%= c.getCid() %>"
+<%--        <a href="update-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>--%>
+        <a href="admin-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>
+
+      <%--        <a href="admin-delete-complaint?cid=<%= c.getCid() %>"--%>
+<%--           class="btn btn-sm btn-danger"--%>
+<%--           onclick="return confirm('Are you sure you want to delete this complaint?');">--%>
+<%--          Delete--%>
+<%--        </a>--%>
+        <a href="admin-complaint?action=delete&cid=<%= c.getCid() %>"
            class="btn btn-sm btn-danger"
-           onclick="return confirm('Are you sure you want to delete this complaint?');">Delete</a>
+           onclick="return confirm('Are you sure you want to delete this complaint?');">
+          Delete
+        </a>
+
       </td>
     </tr>
     <% } %>
     </tbody>
   </table>
-  <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
+  <a href="dashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
 </div>
 </body>
 </html>

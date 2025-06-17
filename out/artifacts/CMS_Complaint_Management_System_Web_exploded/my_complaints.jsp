@@ -42,8 +42,11 @@
       <td><%= c.getCupdatedAt() %></td>
       <td>
         <% if ("PENDING".equals(c.getCstatus())) { %>
-        <a href="edit_complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-warning">Edit</a>
-        <a href="delete_complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+<%--        <a href="edit_complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-warning">Edit</a>--%>
+        <a href="employee-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-warning">Edit</a>
+<%--        <a href="delete_complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>--%>
+        <a href="employee-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+
         <% } %>
       </td>
     </tr>

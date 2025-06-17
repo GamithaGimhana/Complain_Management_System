@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "AdminDeleteComplaintServlet", urlPatterns = {"/admin-delete-complaint"})
+//@WebServlet(name = "AdminDeleteComplaintServlet", urlPatterns = {"/admin-delete-complaint"})
 public class AdminDeleteComplaintServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

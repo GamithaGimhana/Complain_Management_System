@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "EditComplaintServlet", urlPatterns = {"/edit_complaint"})
+//@WebServlet(name = "EditComplaintServlet", urlPatterns = {"/edit_complaint"})
 public class EditComplaintServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cid = req.getParameter("cid");

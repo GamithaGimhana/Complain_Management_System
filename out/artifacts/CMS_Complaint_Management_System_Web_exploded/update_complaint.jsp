@@ -19,7 +19,8 @@
 <body>
 <div class="container mt-5">
   <h3>Update Complaint</h3>
-  <form action="update-complaint" method="post">
+<%--  <form action="update-complaint" method="post">--%>
+  <form action="admin-complaint" method="post">
     <input type="hidden" name="cid" value="<%= complaint.getCid() %>">
     <div class="mb-3">
       <label>Status</label>
@@ -35,7 +36,8 @@
       <textarea class="form-control" name="remarks"><%= complaint.getCremarks() != null ? complaint.getCremarks() : "" %></textarea>
     </div>
     <button type="submit" class="btn btn-success">Update</button>
-    <a href="all-complaints" class="btn btn-secondary">Cancel</a>
+<%--    <a href="all-complaints" class="btn btn-secondary">Cancel</a>--%>
+    <a href="admin-complaint" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 </body>

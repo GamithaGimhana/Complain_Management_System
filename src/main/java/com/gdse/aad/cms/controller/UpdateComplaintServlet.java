@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "UpdateComplaintServlet", urlPatterns = {"/update-complaint"})
+//@WebServlet(name = "UpdateComplaintServlet", urlPatterns = {"/update-complaint"})
 public class UpdateComplaintServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

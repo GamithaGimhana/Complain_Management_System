@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AllComplaintsServlet", urlPatterns = {"/all-complaints"})
+//@WebServlet(name = "AllComplaintsServlet", urlPatterns = {"/all-complaints"})
 public class AllComplaintsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");

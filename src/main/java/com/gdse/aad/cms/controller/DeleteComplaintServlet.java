@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeleteComplaintServlet", urlPatterns = {"/delete_complaint"})
+//@WebServlet(name = "DeleteComplaintServlet", urlPatterns = {"/delete_complaint"})
 public class DeleteComplaintServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IOException {
         String cid = req.getParameter("cid");
