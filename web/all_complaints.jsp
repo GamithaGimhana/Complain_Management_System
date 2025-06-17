@@ -42,19 +42,23 @@
       <td><%= c.getCremarks() != null ? c.getCremarks() : "" %></td>
       <td><%= c.getCcreatedAt() %></td>
       <td>
-<%--        <a href="update-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>--%>
-        <a href="admin-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>
+<%--        If you using function based servlets--%>
+        <a href="update-complaint-status?cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>
 
-      <%--        <a href="admin-delete-complaint?cid=<%= c.getCid() %>"--%>
-<%--           class="btn btn-sm btn-danger"--%>
-<%--           onclick="return confirm('Are you sure you want to delete this complaint?');">--%>
-<%--          Delete--%>
-<%--        </a>--%>
-        <a href="admin-complaint?action=delete&cid=<%= c.getCid() %>"
+        <a href="admin-delete-complaint?cid=<%= c.getCid() %>"
            class="btn btn-sm btn-danger"
            onclick="return confirm('Are you sure you want to delete this complaint?');">
           Delete
         </a>
+
+<%--        If you using role based servlets--%>
+<%--        <a href="admin-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-primary">Update</a>--%>
+
+<%--        <a href="admin-complaint?action=delete&cid=<%= c.getCid() %>"--%>
+<%--           class="btn btn-sm btn-danger"--%>
+<%--           onclick="return confirm('Are you sure you want to delete this complaint?');">--%>
+<%--          Delete--%>
+<%--        </a>--%>
 
       </td>
     </tr>

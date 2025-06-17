@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminComplaintServlet", urlPatterns = {"/admin-complaint"})
+//@WebServlet(name = "AdminComplaintServlet", urlPatterns = {"/admin-complaint"})
 public class AdminComplaintServlet extends HttpServlet {
 
     @Override

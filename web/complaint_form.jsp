@@ -26,8 +26,8 @@
   <div class="card shadow-sm">
     <div class="card-body">
       <h3 class="mb-4">Submit a Complaint</h3>
-<%--      <form action="complaint" method="post">--%>
-        <form action="employee-complaint?action=submit" method="post">
+      <form action="complaint" method="post">
+<%--      <form action="employee-complaint?action=submit" method="post">--%>
         <div class="mb-3">
           <label for="ctitle" class="form-label">Title</label>
           <input type="text" class="form-control" id="ctitle" name="ctitle" required>
