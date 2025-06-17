@@ -34,7 +34,7 @@ public class EmployeeComplaintServlet extends HttpServlet {
                 Complaint complaint = dao.getComplaintById(cid);
                 if (complaint != null && complaint.getUserId().equals(user.getUid()) && "PENDING".equals(complaint.getCstatus())) {
                     req.setAttribute("complaint", complaint);
-                    req.getRequestDispatcher("edit_complaint.jsp").forward(req, resp);
+                    req.getRequestDispatcher("update_user_complaint.jsp").forward(req, resp);
                 } else {
                     resp.sendRedirect("employee-complaint?action=my");
                 }
@@ -50,7 +50,7 @@ public class EmployeeComplaintServlet extends HttpServlet {
             // Default or my complaints view
             List<Complaint> list = dao.getComplaintsByUser(user.getUid());
             req.setAttribute("complaints", list);
-            req.getRequestDispatcher("my_complaints.jsp").forward(req, resp);
+            req.getRequestDispatcher("user_complaints.jsp").forward(req, resp);
 
         } catch (Exception e) {
             throw new ServletException("Failed to process employee request", e);

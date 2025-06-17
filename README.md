@@ -48,11 +48,11 @@ The Complaint Management System allows:
 - │ ├── all_complaints.jsp
 - │ ├── complaint_form.jsp
 - │ ├── dashboard.jsp
-- │ ├── edit_complaint.jsp
 - │ ├── login.jsp
-- │ ├── my_complaints.jsp
 - │ ├── register.jsp
-- │ ├── update_complaint.jsp
+- │ ├── update_complaint_status.jsp
+- │ ├── update_user_complaint.jsp
+- │ ├── user_complaints.jsp
 - │ └── WEB-INF/web.xml
 - │
 - └── schema.sql # DB structure

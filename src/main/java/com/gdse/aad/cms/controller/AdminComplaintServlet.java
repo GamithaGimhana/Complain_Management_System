@@ -38,7 +38,7 @@ public class AdminComplaintServlet extends HttpServlet {
             if ("edit".equals(action)) {
                 Complaint complaint = dao.getComplaintById(cid);
                 req.setAttribute("complaint", complaint);
-                req.getRequestDispatcher("update_complaint.jsp").forward(req, resp);
+                req.getRequestDispatcher("update_complaint_status.jsp").forward(req, resp);
                 return;
             }
 
