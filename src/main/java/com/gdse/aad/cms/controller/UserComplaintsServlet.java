@@ -25,7 +25,7 @@ public class UserComplaintsServlet extends HttpServlet {
             List<Complaint> complaintList = dao.getComplaintsByUser(user.getUid());
 
             req.setAttribute("complaints", complaintList);
-            req.getRequestDispatcher("my_complaints.jsp").forward(req, resp);
+            req.getRequestDispatcher("user_complaints.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new ServletException("Failed to load complaints", e);
         }

@@ -23,6 +23,6 @@ public class DeleteUserComplaintServlet extends HttpServlet {
             throw new ServletException(e);
         }
 
-        resp.sendRedirect("my-complaints");
+        resp.sendRedirect("user-complaints");
     }
 }

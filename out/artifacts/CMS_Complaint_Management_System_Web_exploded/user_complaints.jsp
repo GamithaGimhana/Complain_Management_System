@@ -113,15 +113,10 @@
               <td><%= c.getCupdatedAt() %></td>
               <td>
                 <% if ("PENDING".equals(c.getCstatus())) { %>
-                <%--If you using function based servlets--%>
                 <a href="update-user-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-warning me-1">Edit</a>
-                    <%--If you using role based servlets--%>
   <%--              <a href="employee-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-warning me-1">Edit</a>--%>
-
-                <%--If you using function based servlets--%>
                 <a href="delete-user-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"
                    onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>
-                    <%--If you using role based servlets--%>
   <%--              <a href="employee-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
   <%--                 onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>--%>
                 <% } else { %>

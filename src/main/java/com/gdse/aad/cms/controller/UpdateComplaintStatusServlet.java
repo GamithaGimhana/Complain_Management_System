@@ -19,7 +19,7 @@ public class UpdateComplaintStatusServlet extends HttpServlet {
             ComplaintDAO dao = new ComplaintDAO(getServletContext());
             Complaint complaint = dao.getComplaintById(cid);
             req.setAttribute("complaint", complaint);
-            req.getRequestDispatcher("update_complaint.jsp").forward(req, resp);
+            req.getRequestDispatcher("update_complaint_status.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new ServletException(e);
         }

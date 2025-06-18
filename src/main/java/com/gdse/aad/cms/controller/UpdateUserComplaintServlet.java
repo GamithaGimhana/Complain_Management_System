@@ -23,9 +23,9 @@ public class UpdateUserComplaintServlet extends HttpServlet {
 
             if (complaint != null && complaint.getUserId().equals(user.getUid()) && "PENDING".equals(complaint.getCstatus())) {
                 req.setAttribute("complaint", complaint);
-                req.getRequestDispatcher("edit_complaint.jsp").forward(req, resp);
+                req.getRequestDispatcher("update_user_complaint.jsp").forward(req, resp);
             } else {
-                resp.sendRedirect("my-complaints");
+                resp.sendRedirect("user-complaints");
             }
         } catch (Exception e) {
             throw new ServletException(e);
@@ -45,7 +45,7 @@ public class UpdateUserComplaintServlet extends HttpServlet {
         try {
             ComplaintDAO dao = new ComplaintDAO(getServletContext());
             dao.updateComplaint(updated);
-            resp.sendRedirect("my-complaints");
+            resp.sendRedirect("user-complaints");
         } catch (Exception e) {
             throw new ServletException(e);
         }
