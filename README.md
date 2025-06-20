@@ -1,69 +1,71 @@
-#  Complaint Management System (CMS)
+# 📢📋 Complaint Management System (CMS)
 
 A simple web-based complaint tracking system for employees and administrators, built using JSP, Servlets, MySQL, and Apache DBCP connection pooling.
 
 ---
 
-##  Project Overview
+## 📌 Project Overview
 
 The Complaint Management System allows:
--  **Employees** to register, log in, and submit complaints.
--  **Admins** to view all complaints, and update their status.
+- 👨‍💼 **Employees** to register, log in, and submit complaints.
+- 👩‍💻 **Admins**  to view all complaints, and update their status.
+
+### ✨ Features
+- User registration and login with **BCrypt** password hashing.
+- Role-based dashboards (Admin / Employee).
+- Complaint submit, view submitted complaints, edit, and delete pending complaints (employee). 
+- View all complaints, update their status (Pending, In Progress, Resolved and Rejected), add remarks, and delete complaints (admin).
+- Follows **MVC architecture**.
+- Built using **JSP**, **Servlets**, **JDBC**, **MySQL**, and **Bootstrap**.
 - ️Complaint records include timestamps (`created_at`, `updated_at`) and remarks.[more...](https://www.geeksforgeeks.org/mysql/datetime-vs-timestamp-data-type-in-mysql/#:~:text=Understanding%20TIMESTAMP)
 
-###  Features
-- User registration & login with **BCrypt** password hashing
-- Role-based dashboards (Admin / Employee)
-- Submit, edit, and delete complaints (employee)
-- Admin complaint management (status updates & remarks)
-- Follows **MVC architecture**
-- Built using only **JSP**, **Servlets**, **JDBC**, **MySQL**, and **Bootstrap**
-
 ---
 
-##  Setup & Configuration Guide
+## ⚙️ Setup & Configuration Guide
 
-###  Technology Requirements
+### 🧱 Technology Requirements
 
 - Java JDK 17+
-- Apache Tomcat 11
-- MySQL Server 8.0
-- Apache Maven 
-- MySQL Workbench 
+- Apache Tomcat 10+ or 11
+- MySQL Server (5.7+ or 8.0+)
+- Apache Maven (optional, for build/dependency management)
 
 ---
 
-###  Project Folder Structure - Model-View-Controller (MVC) pattern
+### 📁 Project Folder Structure - Model-View-Controller (MVC) pattern
 
-- CMS_Complaint_Management_System/
-- │
-- ├── src/
-- │ └── com/gdse/aad/cms/
-- │ ├── controller/ # Servlets
-- │ ├── dao/ # Data access (DBCP)
-- │ ├── model/ # JavaBeans (User, Complaint)
-- │ └── utils/ # DataSource connection pool
-- │
-- ├── web/
-- │ ├── all_complaints.jsp
-- │ ├── complaint_form.jsp
-- │ ├── dashboard.jsp
-- │ ├── login.jsp
-- │ ├── register.jsp
-- │ ├── update_complaint_status.jsp
-- │ ├── update_user_complaint.jsp
-- │ ├── user_complaints.jsp
-- │ └── WEB-INF/web.xml
-- │
-- └── schema.sql # DB structure
+```
+CMS_Complaint_Management_System/
+│
+├── src/
+│ └── com/gdse/aad/cms/
+│ ├── controller/            # Servlets handling employee and admin requests
+│ ├── dao/                   # DAO classes for database access and operations (DBCP)
+│ ├── db/                    # DB structure
+│ ├── model/                 # JavaBeans (User, Complaint)
+│ └── utils/                 # DataSource connection pool
+│
+├── web/
+│ ├── all_complaints.jsp
+│ ├── complaint_form.jsp
+│ ├── dashboard.jsp
+│ ├── login.jsp
+│ ├── register.jsp
+│ ├── update_complaint_status.jsp
+│ ├── update_user_complaint.jsp
+│ ├── user_complaints.jsp
+│ └── WEB-INF/web.xml
+│
+└── pom.xml/                 # Maven configuration file for dependencies and build
+```
 
 ---
 
-###  Step-by-Step Setup
+### 🛠️ Step-by-Step Setup
 
-#### 1.  Database Setup
+#### 1. 💾 Database Setup
 
-- Open MySQL Workbench
+- Create a MySQL database.
 - Run the `schema.sql` provided:
 
 ```sql
@@ -91,27 +93,63 @@ CREATE TABLE IF NOT EXISTS complaint (
 );
 ```
 
-#### 2.  Configure the Database Connection
+#### 2. ⚙️ Configure the Database Connection
 
+- Configure database connection details in the servlet context or connection pool settings.
 - File: DataSource.java
 
 ```
 ds.setUrl("jdbc:mysql://localhost:3306/complaint_management_system");
-ds.setUsername("root");
-ds.setPassword("your_password"); // change this!
+ds.setUsername("root"); // change to your username!
+ds.setPassword("your_password"); // change to your password!
 ```
 
-#### 3.  Deploy on Apache Tomcat
+3. ▶️ Deploy on Apache Tomcat
 
-- Open IntelliJ IDEA
-- Import as Maven project
-- Run on Apache Tomcat
+- Open your IDE.
+- Import as Maven project (if using Maven).
+- Build the project (`mvn clean package`).
+- Deploy the WAR file to Tomcat’s `webapps` folder.
+- Start Tomcat server.
 - Visit: http://localhost:8080/CMS_Complaint_Management_System
+- Log in as an employee or admin to access the respective dashboard.
 
-####  Status
+---
+
+### ✅ Status
 
 -  Completed core features (Servlets, JSP, MVC, No AJAX or any asynchronous HTTP mechanism)
 
-####  License
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repo.
+2. Create a feature branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -m 'Add feature'`).
+4. Push to your branch (`git push origin feature-name`).
+5. Open a Pull Request with a clear description.
+
+---
+
+## 📧 Contact
+
+For questions or support:
+
+- **Email:** gamitha.gimhana99@gmail.com
+- **GitHub:** [Gamitha Gimhana](https://github.com/GamithaGimhana)
+- **Linkedin:** [Gamitha Gimhana](https://www.linkedin.com/in/gamithagimhana/)
+
+---
+
+## 📚 License
 
 - This project is developed by Gamitha Gimhana.
+
+---
+
+Thank you for using the Complaint Management System! 🎉
+
+---
