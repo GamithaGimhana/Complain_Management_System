@@ -110,7 +110,7 @@
                 <% } else if ("ADMIN".equals(user.getUrole())) { %>
                 <a href="all-complaints">All Complaints</a>
                 <% } %>
-                <a href="logout">Logout</a>
+                <a href="#" onclick="confirmLogout()">Logout</a>
             </div>
         </div>
 
@@ -148,5 +148,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will be logged out of the system.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4d6bfe',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'logout';
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

@@ -75,7 +75,7 @@
                     </div>
                     <div class="card-body">
                         <%--If you using function based servlets--%>
-                        <form id="complaintForm" action="complaint" method="post">
+                        <form id="complaintForm" action="complaint?action=submit" method="post">
                             <%--If you using role based servlets--%>
     <%--                    <form id="complaintForm" action="employee-complaint?action=submit" method="post">--%>
                             <div class="mb-3">
@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <a href="dashboard.jsp" class="btn btn-outline-secondary">Cancel</a>
+                                <a href="dashboard.jsp" class="btn btn-outline-secondary">Back to Dashboard</a>
                                 <button type="submit" class="btn btn-purple">Submit Complaint</button>
                             </div>
                         </form>
@@ -125,5 +125,23 @@
             }
         });
     </script>
+
+    <%
+        Boolean complaintSuccess = (Boolean) session.getAttribute("complaintSuccess");
+        if (complaintSuccess != null && complaintSuccess) {
+            session.removeAttribute("complaintSuccess");
+    %>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Complaint Submitted',
+            text: 'Your complaint was submitted successfully!',
+            confirmButtonColor: '#4d6bfe'
+        });
+    </script>
+    <%
+        }
+    %>
+
 </body>
 </html>

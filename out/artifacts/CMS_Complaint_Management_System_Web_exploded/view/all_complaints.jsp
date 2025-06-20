@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: gamit
-  Date: 6/15/2025
-  Time: 4:11 PM
+  Date: 6/16/2025
+  Time: 12:05 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Complaints</title>
+  <title>All Complaints</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
@@ -80,48 +80,46 @@
   <div class="container py-5">
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">My Complaints</h5>
-        <div>
-          <a href="complaint_form.jsp" class="btn btn-sm btn-purple me-2">New Complaint</a>
-          <a href="dashboard.jsp" class="btn btn-sm btn-outline-light">Back to Dashboard</a>
-        </div>
+        <h5 class="mb-0">All Complaints</h5>
+        <a href="../view/dashboard.jsp" class="btn btn-sm btn-outline-light">Back to Dashboard</a>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
             <tr>
+              <th>Submitted By</th>
               <th>Title</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Remarks</th>
               <th>Created At</th>
-              <th>Last Updated</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <% for (Complaint c : complaints) { %>
             <tr>
+              <td><%= c.getUsername() %></td>
               <td><%= c.getCtitle() %></td>
               <td><%= c.getCdescription() %></td>
               <td>
                 <span class="status-<%= c.getCstatus().toLowerCase().replace("_", "-") %>">
-                    <%= c.getCstatus() %>
+                  <%= c.getCstatus() %>
                 </span>
               </td>
+              <td><%= c.getCremarks() != null ? c.getCremarks() : "—" %></td>
               <td><%= c.getCcreatedAt() %></td>
-              <td><%= c.getCupdatedAt() %></td>
               <td>
-                <% if ("PENDING".equals(c.getCstatus())) { %>
-                <a href="update-user-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-warning me-1">Edit</a>
-  <%--              <a href="employee-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-warning me-1">Edit</a>--%>
-                <a href="delete-user-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"
-                   onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>
-  <%--              <a href="employee-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
-  <%--                 onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>--%>
-                <% } else { %>
-                <span class="text-muted">No actions available</span>
-                <% } %>
+                <%--If you using function based servlets--%>
+                <a href="update-complaint-status?cid=<%= c.getCid() %>" class="btn btn-sm btn-purple">Update</a>
+                <a href="admin-delete-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"
+                   onclick="confirmDelete(event)">Delete</a>
+
+                <%--If you using role based servlets--%>
+  <%--              <a href="admin-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-purple">Update</a>--%>
+  <%--              <a href="admin-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
+  <%--                 onclick="confirmDelete(event)">Delete</a>--%>
               </td>
             </tr>
             <% } %>
@@ -135,7 +133,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    function confirmDelete(event, cid) {
+    function confirmDelete(event) {
       event.preventDefault();
       const url = event.currentTarget.getAttribute('href');
 

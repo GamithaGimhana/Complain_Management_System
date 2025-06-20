@@ -114,12 +114,12 @@
                 <%--If you using function based servlets--%>
                 <a href="update-complaint-status?cid=<%= c.getCid() %>" class="btn btn-sm btn-purple">Update</a>
                 <a href="admin-delete-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"
-                   onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>
+                   onclick="confirmDelete(event)">Delete</a>
 
                 <%--If you using role based servlets--%>
   <%--              <a href="admin-complaint?action=edit&cid=<%= c.getCid() %>" class="btn btn-sm btn-purple">Update</a>--%>
   <%--              <a href="admin-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
-  <%--                 onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>--%>
+  <%--                 onclick="confirmDelete(event)">Delete</a>--%>
               </td>
             </tr>
             <% } %>
@@ -133,7 +133,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    function confirmDelete(event, cid) {
+    function confirmDelete(event) {
       event.preventDefault();
       const url = event.currentTarget.getAttribute('href');
 

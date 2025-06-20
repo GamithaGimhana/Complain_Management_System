@@ -103,14 +103,14 @@
                 <h5>Complaint System</h5>
             </div>
             <div class="sidebar-menu">
-                <a href="dashboard.jsp" class="active">Dashboard</a>
+                <a href="../view/dashboard.jsp" class="active">Dashboard</a>
                 <% if ("EMPLOYEE".equals(user.getUrole())) { %>
-                <a href="complaint_form.jsp">Submit Complaint</a>
+                <a href="../view/complaint_form.jsp">Submit Complaint</a>
                 <a href="user-complaints">My Complaints</a>
                 <% } else if ("ADMIN".equals(user.getUrole())) { %>
                 <a href="all-complaints">All Complaints</a>
                 <% } %>
-                <a href="logout">Logout</a>
+                <a href="#" onclick="confirmLogout()">Logout</a>
             </div>
         </div>
 
@@ -130,11 +130,15 @@
                     <% if ("EMPLOYEE".equals(user.getUrole())) { %>
                         <h5>Employee Options</h5>
                         <a href="complaint_form.jsp" class="btn btn-purple me-2">Submit New Complaint</a>
+                        <%--If you using function based servlets--%>
                         <a href="user-complaints" class="btn btn-outline-secondary">View My Complaints</a>
+                        <%--If you using role based servlets--%>
     <%--                    <a href="employee-complaint" class="btn btn-outline-secondary">View My Complaints</a>--%>
                     <% } else if ("ADMIN".equals(user.getUrole())) { %>
                         <h5>Admin Options</h5>
+                        <%--If you using function based servlets--%>
                         <a href="all-complaints" class="btn btn-purple">Manage Complaints</a>
+                        <%--If you using role based servlets--%>
     <%--                    <a href="admin-complaint" class="btn btn-purple">Manage Complaints</a>--%>
                     <% } %>
                 </div>
@@ -144,5 +148,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will be logged out of the system.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4d6bfe',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'logout';
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

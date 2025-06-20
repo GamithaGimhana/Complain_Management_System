@@ -120,10 +120,10 @@
 
                 <%--If you using function based servlets--%>
                 <a href="delete-user-complaint?cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"
-                   onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>
+                   onclick="confirmDelete(event)">Delete</a>
                     <%--If you using role based servlets--%>
-  <%--              <a href="employee-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
-  <%--                 onclick="confirmDelete(event, <%= c.getCid() %>)">Delete</a>--%>
+<%--                <a href="employee-complaint?action=delete&cid=<%= c.getCid() %>" class="btn btn-sm btn-outline-danger"--%>
+<%--                   onclick="confirmDelete(event)">Delete</a>--%>
                 <% } else { %>
                 <span class="text-muted">No actions available</span>
                 <% } %>
@@ -140,7 +140,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    function confirmDelete(event, cid) {
+    function confirmDelete(event) {
       event.preventDefault();
       const url = event.currentTarget.getAttribute('href');
 

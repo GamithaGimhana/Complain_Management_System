@@ -74,7 +74,9 @@
                         <h5 class="mb-0">Submit New Complaint</h5>
                     </div>
                     <div class="card-body">
-                        <form id="complaintForm" action="complaint" method="post">
+                        <%--If you using function based servlets--%>
+                        <form id="complaintForm" action="complaint?action=submit" method="post">
+                            <%--If you using role based servlets--%>
     <%--                    <form id="complaintForm" action="employee-complaint?action=submit" method="post">--%>
                             <div class="mb-3">
                                 <label for="ctitle" class="form-label">Title</label>
@@ -87,7 +89,7 @@
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <a href="dashboard.jsp" class="btn btn-outline-secondary">Cancel</a>
+                                <a href="../view/dashboard.jsp" class="btn btn-outline-secondary">Back to Dashboard</a>
                                 <button type="submit" class="btn btn-purple">Submit Complaint</button>
                             </div>
                         </form>
@@ -117,11 +119,29 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Validation Error',
-                    text: 'Description should be at least 20 characters long',
+                    text: 'Description should be at least 10 characters long',
                     confirmButtonColor: '#9b59b6'
                 });
             }
         });
     </script>
+
+    <%
+        Boolean complaintSuccess = (Boolean) session.getAttribute("complaintSuccess");
+        if (complaintSuccess != null && complaintSuccess) {
+            session.removeAttribute("complaintSuccess");
+    %>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Complaint Submitted',
+            text: 'Your complaint was submitted successfully!',
+            confirmButtonColor: '#4d6bfe'
+        });
+    </script>
+    <%
+        }
+    %>
+
 </body>
 </html>

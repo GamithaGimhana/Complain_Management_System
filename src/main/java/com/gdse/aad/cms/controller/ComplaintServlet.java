@@ -34,7 +34,9 @@ public class ComplaintServlet extends HttpServlet {
             ComplaintDAO dao = new ComplaintDAO(getServletContext());
             boolean success = dao.saveComplaint(complaint);
             if (success) {
-                resp.sendRedirect("dashboard.jsp");
+//                resp.sendRedirect("dashboard.jsp");
+                req.getSession().setAttribute("complaintSuccess", true);
+                resp.sendRedirect("complaint_form.jsp");
             } else {
                 req.setAttribute("errorMessage", "Failed to submit complaint.");
                 req.getRequestDispatcher("complaint_form.jsp").forward(req, resp);
